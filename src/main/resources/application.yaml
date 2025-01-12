@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: auth-demo
+
+  data:
+    mongodb:
+      database: auth
+      host: localhost
+      port: 27017
