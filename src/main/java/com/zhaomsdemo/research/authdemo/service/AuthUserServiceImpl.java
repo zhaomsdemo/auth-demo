@@ -1,11 +1,15 @@
 package com.zhaomsdemo.research.authdemo.service;
 
 import com.zhaomsdemo.research.authdemo.domain.AuthUser;
+import com.zhaomsdemo.research.authdemo.dto.AuthUserDto;
 import com.zhaomsdemo.research.authdemo.repository.AuthUserRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -15,8 +19,14 @@ public class AuthUserServiceImpl implements AuthUserService {
     final AuthUserRepository authUserRepository;
 
     @Override
-    public AuthUser createUser(AuthUser authUser) {
+    public AuthUser createUser(AuthUserDto authUserDto) {
+        AuthUser authUser = toAuthUser(authUserDto);
         return authUserRepository.save(authUser);
+    }
+
+    @Override
+    public List<AuthUser> findAll() {
+        return authUserRepository.findAll();
     }
 
     @Override
@@ -42,5 +52,11 @@ public class AuthUserServiceImpl implements AuthUserService {
     @Override
     public AuthUser deleteUser(String id) {
         return null;
+    }
+
+    private AuthUser toAuthUser(AuthUserDto authUserDto) {
+        AuthUser authUser = new AuthUser();
+        BeanUtils.copyProperties(authUserDto, authUser);
+        return authUser;
     }
 }

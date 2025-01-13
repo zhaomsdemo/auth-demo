@@ -1,10 +1,14 @@
 package com.zhaomsdemo.research.authdemo.service;
 
 import com.zhaomsdemo.research.authdemo.domain.AuthUser;
+import com.zhaomsdemo.research.authdemo.dto.AuthUserDto;
+
+import java.util.List;
 
 public interface AuthUserService {
 
-    AuthUser createUser(AuthUser authUser);
+    AuthUser createUser(AuthUserDto authUserDto);
+    List<AuthUser> findAll();
     AuthUser findUserById(String id);
     AuthUser findUserByUsername(String username);
     AuthUser findUserByEmail(String email);
