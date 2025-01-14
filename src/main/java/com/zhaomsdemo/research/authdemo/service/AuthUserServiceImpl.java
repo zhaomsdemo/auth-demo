@@ -2,6 +2,7 @@ package com.zhaomsdemo.research.authdemo.service;
 
 import com.zhaomsdemo.research.authdemo.domain.AuthUser;
 import com.zhaomsdemo.research.authdemo.dto.AuthUserDto;
+import com.zhaomsdemo.research.authdemo.exception.NotFoundException;
 import com.zhaomsdemo.research.authdemo.repository.AuthUserRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -31,17 +32,17 @@ public class AuthUserServiceImpl implements AuthUserService {
 
     @Override
     public AuthUser findUserById(String id) {
-        return null;
+        return authUserRepository.findById(id).orElseThrow(() -> new NotFoundException(id));
     }
 
     @Override
-    public AuthUser findUserByUsername(String username) {
-        return null;
+    public List<AuthUser> findUserByUsername(String username) {
+        return authUserRepository.findByUsername(username);
     }
 
     @Override
-    public AuthUser findUserByEmail(String email) {
-        return null;
+    public List<AuthUser> findUserByEmail(String email) {
+        return authUserRepository.findByEmail(email);
     }
 
     @Override

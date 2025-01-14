@@ -1,8 +1,6 @@
 package com.zhaomsdemo.research.authdemo.domain;
 
 import com.zhaomsdemo.research.authdemo.enums.Role;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,7 +35,6 @@ public class AuthUser implements UserDetails {
     String password;
     String email;
     String phone;
-    @Enumerated(EnumType.STRING)
     Role role;
     @CreatedBy
     String createdBy;

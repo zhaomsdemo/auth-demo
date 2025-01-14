@@ -10,8 +10,8 @@ public interface AuthUserService {
     AuthUser createUser(AuthUserDto authUserDto);
     List<AuthUser> findAll();
     AuthUser findUserById(String id);
-    AuthUser findUserByUsername(String username);
-    AuthUser findUserByEmail(String email);
+    List<AuthUser> findUserByUsername(String username);
+    List<AuthUser> findUserByEmail(String email);
     AuthUser updateUser(String id, AuthUser authUser);
     AuthUser deleteUser(String id);
 }
